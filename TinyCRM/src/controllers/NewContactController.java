@@ -87,7 +87,7 @@ public class NewContactController extends ContactController {
 
 	@Override
 	public void validateFacebook() throws InvalidFormFieldData {
-		if(!view.getTextFacebook().matches("[a-zA-Z]* ?[a-zA-Z]* ?[a-zA-Z]* ?[a-zA-Z]")) {
+		if(!view.getTextFacebook().matches("[a-zA-Z]* ?[a-zA-Z]* ?[a-zA-Z]* ?[a-zA-Z]*")) {
 			addValidationError("Facebook", "Invalid facebook name structure. Examples: 'Carl Jhonson', 'Mia S Savelli Ruiz'");
 		}
 		super.validateFacebook();
