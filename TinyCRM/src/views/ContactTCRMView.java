@@ -19,7 +19,7 @@ public interface ContactTCRMView extends TCRMView {
 	void setTextFirstName(String textFirstName);
 	void setTextLastName(String textLastName);
 	void setTextCompany(String textCompany);
-	void setTextTelephone(String textTelephoe);
+	void setTextTelephone(String textTelephone);
 	void setTextEmail(String textEmail);
 	void setTextFacebook(String textFacebook);
 
@@ -30,7 +30,7 @@ public interface ContactTCRMView extends TCRMView {
 	void setSelectClientListener(ActionListener listener);
 	
 	String getErrorFirstName();
-	String getErrorLasttName();
+	String getErrorLastName();
 	String getErrorCompany();
 	String getErrorTelephone();
 	String getErrorEmail();
@@ -41,6 +41,6 @@ public interface ContactTCRMView extends TCRMView {
 	void setErrorCompany(String errorCompany);
 	void setErrorTelephone(String errorTelephone);
 	void setErrorEmail(String errorEmail);
-	void setErrorFacebook(String errorFacebok);
+	void setErrorFacebook(String errorFacebook);
 
 }

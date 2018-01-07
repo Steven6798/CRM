@@ -15,7 +15,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
 
 import beans.CRMBean;
 import beans.ContactBean;
@@ -369,7 +368,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 	}
 
 	public String getErrorFirstName() { return firstNameLblError.getText(); }
-	public String getErrorLasttName() { return lastNameLblError.getText(); }
+	public String getErrorLastName() { return lastNameLblError.getText(); }
 	public String getErrorCompany()   { return companyLblError.getText(); }
 	public String getErrorTelephone() { return telephoneLblError.getText(); }
 	public String getErrorEmail()     { return emailLblError.getText(); }
@@ -456,6 +455,5 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		emailLblError.setText("");
 		facebookLblError.setText("");
 	}
-
 
 }

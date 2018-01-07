@@ -11,7 +11,7 @@ public interface ClientTCRMView extends TCRMView {
 	
 	void setTextId(String textId);
 	void setTextCompany(String textCompany);
-	void setTextTelephone(String textTelephoe);
+	void setTextTelephone(String textTelephone);
 	void setTextEmail(String textEmail);
 	void setTextWebsite(String textWebsite);
 	void setTextFacebook(String textFacebook);
@@ -23,7 +23,7 @@ public interface ClientTCRMView extends TCRMView {
 	String getErrorFacebook();
 
 	void setErrorCompany(String errorCompany);
-	void setErrorTelephone(String errorFirstName);
+	void setErrorTelephone(String errorTelephone);
 	void setErrorEmail(String errorEmail);
 	void setErrorWebsite(String errorWebsite);
 	void setErrorFacebook(String errorFacebook);
