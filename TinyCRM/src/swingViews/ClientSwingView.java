@@ -12,7 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
 
 import beans.CRMBean;
 import beans.ClientBean;
@@ -42,13 +41,11 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 	public ClientSwingView() {
 		super();
 		setTitle("Clients");
-
+		
 		JScrollPane centerScrollPane = new JScrollPane();
-		centerScrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
 		centerScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		centerScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		setCenterPanel(centerScrollPane);
-		
 		
 		JPanel centerGrid = new JPanel();
 		centerScrollPane.setViewportView(centerGrid);
@@ -243,7 +240,7 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 
 	public void setTextId(String textId)              { this.textId.setText(textId); }
 	public void setTextCompany(String textCompany)    { this.textCompany.setText(textCompany); }
-	public void setTextTelephone(String textTelephoe) { this.textTelephone.setText(textTelephoe); }
+	public void setTextTelephone(String textTelephone) { this.textTelephone.setText(textTelephone); }
 	public void setTextEmail(String textEmail)        { this.textEmail.setText(textEmail); }
 	public void setTextWebsite(String textWebsite)    { this.textWebsite.setText(textWebsite); }
 	public void setTextFacebook(String textFacebook)  { this.textFacebook.setText(textFacebook); }
@@ -255,14 +252,13 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 	public String getErrorFacebook()  { return facebookLblError.getText(); }
 
 	public void setErrorCompany(String errorCompany)     { companyLblError.setText(errorCompany); }
-	public void setErrorTelephone(String errorFirstName) { telephoneLblError.setText(errorFirstName); }
+	public void setErrorTelephone(String errorTelephone) { telephoneLblError.setText(errorTelephone); }
 	public void setErrorEmail(String errorEmail)         { emailLblError.setText(errorEmail); }
 	public void setErrorWebsite(String errorWebsite)     { websiteLblError.setText(errorWebsite); }
 	public void setErrorFacebook(String errorFacebook)   { facebookLblError.setText(errorFacebook); }
 	
 	public void enableEditMode() { 
 		super.enableEditMode();
-		//textId.setEditable(true);
 		textCompany.setEditable(true);
 		textTelephone.setEditable(true);
 		textEmail.setEditable(true);
@@ -282,7 +278,6 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 	
 	public void formToBean(CRMBean bean) {
 		ClientBean cb = (ClientBean) bean;
-		// cb.setId(Integer.parseInt(textId.getText()));  // Id is never editable
 		cb.setCompany(textCompany.getText());
 		cb.setTelephone(textTelephone.getText());
 		cb.setEmail(textEmail.getText());

@@ -26,13 +26,13 @@ public class CRMMain {
 	// Create Contact module MVC objects
 	public static SwingView contactView = new ContactSwingView();
 	public static CRMModel contactModel = new ContactModel();
-	// Contacts module has relationship with Clients module so we pass the Clients model object to the Contacts controller
+	// Contacts module has relationship with Client module so we pass the Clients model object to the Contacts controller
 	public static CRMController contactController = new NewContactController(contactView, contactModel, clientModel); 
 	
 	// Create Opportunity module MVC objects
 	public static SwingView opportunityView = new OpportunitySwingView();
 	public static CRMModel opportunityModel = new OpportunityModel();
-	// Opportunity module has relationship with Clients module so we pass the Clients model object to the Opportunity controller
+	// Opportunity module has relationship with Client module so we pass the Clients model object to the Opportunity controller
 	public static CRMController opportunityController = new OpportunityController(opportunityView, opportunityModel, clientModel); 
 	
 	private static String currentModule;
@@ -73,13 +73,9 @@ public class CRMMain {
 	public static void switchToModule(String moduleName) {
 
 		if (moduleName.equals(currentModule)) return;
-		
 		SwingView nextView = mapModuleToView.get(moduleName);
-		
 		if (nextView != null) {
-			
 			nextView.setMessagesText("Welcome to TinyCRM: " + moduleName);
-
 			nextView.setVisible(true);
 			if (currentView != null) currentView.setVisible(false);
 			

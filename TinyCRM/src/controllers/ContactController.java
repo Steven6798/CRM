@@ -18,7 +18,6 @@ public class ContactController extends CRMController {
 		super(contactView, contactModel);
 
 		ContactSwingView cv = (ContactSwingView) contactView;
-		//ContactModel cm = (ContactModel) contactModel;
 		ClientModel clientModel2 = (ClientModel) clientModel;
 
 		cv.setSelectClientItems(clientModel2.getAllBeans());
@@ -144,4 +143,3 @@ public class ContactController extends CRMController {
 	}
 
 }
-

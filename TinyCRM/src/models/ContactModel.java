@@ -25,21 +25,6 @@ public class ContactModel extends CRMModel {
 		this.setIndex(0);
 	}
 
-//	@Override
-//	public void doLeft() {
-//		super.doLeft();
-//	}
-
-//	@Override
-//	public void doRight() {
-//		super.doRight();
-//	}
-
-//	@Override
-//	public void doEdit() {
-//		super.doEdit();
-//	}
-
 	@Override
 	public void doAdd() {
 		long id = 1;
@@ -50,21 +35,11 @@ public class ContactModel extends CRMModel {
 		this.setIndex(this.getCount() - 1);  // New record becomes the current one
 	}
 
-//	@Override
-//	public void doDelete() {
-//		super.doDelete();
-//	}
-
 	@Override
 	public void doSave() {
 		super.doSave();
 		saveBeansToFile(CONTACTS_FILE);
 	}
-	
-//	@Override
-//	public void doCancel() {
-//		super.doCancel();
-//	}
 
 	public ArrayList<CRMBean> parseBeansFromFile(String filename) {
 		File inputFile = new File(filename);
@@ -106,7 +81,6 @@ public class ContactModel extends CRMModel {
 	}
 	
 	public String beanToFileLine(CRMBean bean) {
-
 		String result = "";
 		ContactBean cb = (ContactBean) bean;
 		result += cb.getId();
@@ -130,11 +104,9 @@ public class ContactModel extends CRMModel {
 		result += '\t';
 		result += cb.getFacebook();
 		return result;
-		
 	}
 
 	public void saveBeansToFile(String filename) {
-		
 		ArrayList<CRMBean> contactBeans = getAllBeans();
 		File outputFile = new File(filename);
 		try {

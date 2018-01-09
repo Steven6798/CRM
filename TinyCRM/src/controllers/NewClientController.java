@@ -51,4 +51,5 @@ public class NewClientController extends ClientController{
 		}
 		super.validateFacebook();
 	}
+	
 }

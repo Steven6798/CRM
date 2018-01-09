@@ -25,10 +25,9 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 	private static final long serialVersionUID = 1L;
 
 	protected class ClientForComboBox {
-
 		private long id;
 		private String description;
-
+		
 		protected long getId() {
 			return id;
 		}
@@ -52,7 +51,6 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		public String toString() {
 			return description;
 		}
-		
 	}
 
 	private JTextField textId;
@@ -325,7 +323,6 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		centerGrid.add(facebookLblError, gbc_facebookLblbError);
 
 		this.setMessagesText("No Contacts in the CRM");
-
 	}
 
 	public String getTextId()        { return textId.getText(); }
@@ -340,7 +337,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 	public void setTextFirstName(String textFirstName) { this.textFirstName.setText(textFirstName); }
 	public void setTextLastName(String textLastName)   { this.textLastName.setText(textLastName); }
 	public void setTextCompany(String textCompany)     { this.textCompany.setText(textCompany); }
-	public void setTextTelephone(String textTelephoe)  { this.textTelephone.setText(textTelephoe); }
+	public void setTextTelephone(String textTelephone)  { this.textTelephone.setText(textTelephone); }
 	public void setTextEmail(String textEmail)         { this.textEmail.setText(textEmail); }
 	public void setTextFacebook(String textFacebook)   { this.textFacebook.setText(textFacebook); }
 
@@ -379,7 +376,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 	public void setErrorCompany(String errorCompany)     { companyLblError.setText(errorCompany); }
 	public void setErrorTelephone(String errorTelephone) { telephoneLblError.setText(errorTelephone); }
 	public void setErrorEmail(String errorEmail)         { emailLblError.setText(errorEmail); }
-	public void setErrorFacebook(String errorFacebok)    { facebookLblError.setText(errorFacebok); }
+	public void setErrorFacebook(String errorFacebook)    { facebookLblError.setText(errorFacebook); }
 
 	public void beanToForm(CRMBean bean) {
 		ContactBean cb = (ContactBean) bean;
@@ -400,7 +397,6 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 	public void formToBean(CRMBean bean) {
 		ContactBean cb = (ContactBean) bean;
-		//cb.setId(Integer.parseInt(textId.getText()));  // Id is never editable
 		cb.setFirstName(textFirstName.getText());
 		cb.setLastName(textLastName.getText());
 		cb.setCompany(textCompany.getText());
@@ -412,7 +408,6 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 	public void enableEditMode() { 
 		super.enableEditMode();
-		//textId.setEditable(true);
 		textFirstName.setEditable(true);
 		textLastName.setEditable(true);
 		textCompany.setEditable(true);
@@ -421,6 +416,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		textEmail.setEditable(true);
 		textFacebook.setEditable(true);
 	}
+	
 	public void disableEditMode() {
 		super.disableEditMode();
 		textId.setEditable(false);

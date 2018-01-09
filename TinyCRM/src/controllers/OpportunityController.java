@@ -29,10 +29,10 @@ public class OpportunityController extends CRMController {
 		});
 	}
 	
-//	public void doInit() {
-//		super.doInit();
-//		refreshDropdowns();
-//	}
+	public void doInit() {
+		super.doInit();
+		refreshDropdowns();
+	}
 	
 	public void doLeft() {
 		System.out.println("OpportunityController.doLeft()");
@@ -94,12 +94,18 @@ public class OpportunityController extends CRMController {
 		if (view.getTextValue().trim().length() == 0) {
 			addValidationError("Value", "Empty Value. Required Field.");
 		}
+		else if(!view.getTextValue().matches("[0-9]*")) {
+			addValidationError("Value", "Value must only contain numbers.");
+		}
 	}
 	
 	public void validateDate() throws InvalidFormFieldData {
 		OpportunityTCRMView view = (OpportunityTCRMView) getView();
 		if (view.getTextDate().trim().length() == 0) {
 			addValidationError("Date", "Empty Date. Required Field.");
+		}
+		else if(!view.getTextDate().matches("[0-9]{2}.[0-9]{2}.(?:[0-9]{2})?[0-9]{2}")) {
+			addValidationError("Date", "Date must only contain numbers and slashes.");
 		}
 	}
 	

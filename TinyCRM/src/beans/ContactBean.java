@@ -44,9 +44,11 @@ public class ContactBean extends CRMBean {
 	public void setCompany(String company) {
 		this.company = company;
 	}
+	
 	public long getClient() {
 		return client;
 	}
+	
 	public void setClient(long id) {
 		this.client = id;
 	}

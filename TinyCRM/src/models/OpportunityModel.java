@@ -25,21 +25,6 @@ public class OpportunityModel extends CRMModel {
 		this.setIndex(0);
 	}
 
-	//		@Override
-	//		public void doLeft() {
-	//			super.doLeft();
-	//		}
-
-	//		@Override
-	//		public void doRight() {
-	//			super.doRight();
-	//		}
-
-	//		@Override
-	//		public void doEdit() {
-	//			super.doEdit();
-	//		}
-
 	@Override
 	public void doAdd() {
 		long id = 1;
@@ -50,21 +35,11 @@ public class OpportunityModel extends CRMModel {
 		this.setIndex(this.getCount() - 1);  // New record becomes the current one
 	}
 
-	//		@Override
-	//		public void doDelete() {
-	//			super.doDelete();
-	//		}
-
 	@Override
 	public void doSave() {
 		super.doSave();
 		saveBeansToFile(OPPORTUNITIES_FILE);
 	}
-
-	//		@Override
-	//		public void doCancel() {
-	//			super.doCancel();
-	//		}
 
 	public ArrayList<CRMBean> parseBeansFromFile(String filename) {
 		File inputFile = new File(filename);
@@ -123,7 +98,6 @@ public class OpportunityModel extends CRMModel {
 	}
 
 	public void saveBeansToFile(String filename) {
-
 		ArrayList<CRMBean> opportunityBeans = getAllBeans();
 		File outputFile = new File(filename);
 		try {

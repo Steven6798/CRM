@@ -22,22 +22,8 @@ public class ClientModel extends CRMModel {
 		super.doInit();
 		ArrayList<CRMBean> beans = parseBeansFromFile(CLIENTS_FILE);
 		this.setList(beans);
-		setIndex(0);	}
-
-//	@Override
-//	public void doLeft() {
-//		super.doLeft();
-//	}
-
-//	@Override
-//	public void doRight() {
-//		super.doRight();
-//	}
-
-//	@Override
-//	public void doEdit() {
-//		super.doEdit();
-//	}
+		setIndex(0);
+	}
 
 	@Override
 	public void doAdd() {
@@ -49,22 +35,11 @@ public class ClientModel extends CRMModel {
 		this.setIndex(this.getCount() - 1);
 	}
 
-//	@Override
-//	public void doDelete() {
-//		super.doDelete();
-//
-//	}
-
 	@Override
 	public void doSave() {
 		super.doSave();
 		saveBeansToFile(CLIENTS_FILE);
 	}
-	
-//	@Override
-//	public void doCancel() {
-//		super.doCancel();
-//	}
 	
 	public ArrayList<CRMBean> parseBeansFromFile(String filename) {
 		File inputFile = new File(filename);
@@ -101,7 +76,6 @@ public class ClientModel extends CRMModel {
 	}
 	
 	public void saveBeansToFile(String filename) {
-		
 		ArrayList<CRMBean> contactBeans = getAllBeans();
 		File outputFile = new File(filename);
 		try {
@@ -119,7 +93,6 @@ public class ClientModel extends CRMModel {
 	}
 	
 	public String beanToFileLine(CRMBean bean) {
-
 		String result = "";
 		ClientBean cb = (ClientBean) bean;
 		result += cb.getId();
@@ -134,7 +107,6 @@ public class ClientModel extends CRMModel {
 		result += '\t';
 		result += cb.getFacebook();
 		return result;
-		
 	}
 
 }

@@ -41,8 +41,6 @@ public abstract class CRMController {
 		this.view.setCancelButtonListener(() -> doCancel());
 
 		refreshView();
-		//view.setMessagesText("Welcome to TinyCRM: Contacts");
-
 	}
 
 	public CRMModel getModel() {
@@ -157,6 +155,7 @@ public abstract class CRMController {
 		}
 		validationErrors.clear();
 		this.refreshView();
+		view.setMessagesText("Editing Canceled");
 	}
 	
 	public void setSwitchModuleListener(Consumer <String> f) {

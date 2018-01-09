@@ -25,7 +25,6 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 	private static final long serialVersionUID = 1L;
 
 	protected class ClientForComboBox {
-
 		private long id;
 		private String description;
 
@@ -216,6 +215,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 
 		textDate = new JTextField();
 		textDate.setEditable(false);
+		textDate.setToolTipText("dd/mm/yyyy");
 		GridBagConstraints gbc_textDate = new GridBagConstraints();
 		gbc_textDate.insets = new Insets(0, 0, 5, 0);
 		gbc_textDate.fill = GridBagConstraints.HORIZONTAL;
