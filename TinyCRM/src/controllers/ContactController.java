@@ -45,7 +45,7 @@ public class ContactController extends CRMController {
 	}
 
 	public void doEdit() {
-		System.out.println("ContactController.doRight()");
+		System.out.println("ContactController.doEdit()");
 		refreshDropdowns();
 		super.doEdit();
 	}

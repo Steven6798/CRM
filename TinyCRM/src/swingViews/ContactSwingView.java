@@ -132,6 +132,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 		textFirstName = new JTextField();
 		textFirstName.setEditable(false);
+		textFirstName.setToolTipText("Dirk N");
 		GridBagConstraints gbc_txtFirstname = new GridBagConstraints();
 		gbc_txtFirstname.insets = new Insets(0, 0, 5, 0);
 		gbc_txtFirstname.fill = GridBagConstraints.HORIZONTAL;
@@ -161,6 +162,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 		textLastName = new JTextField();
 		textLastName.setEditable(false);
+		textLastName.setToolTipText("Mcolumm James");
 		GridBagConstraints gbc_textLastName = new GridBagConstraints();
 		gbc_textLastName.insets = new Insets(0, 0, 5, 0);
 		gbc_textLastName.fill = GridBagConstraints.HORIZONTAL;
@@ -189,6 +191,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 		textCompany = new JTextField();
 		textCompany.setEditable(false);
+		textCompany.setToolTipText("Art inc~'!&");
 		GridBagConstraints gbc_textCompany = new GridBagConstraints();
 		gbc_textCompany.insets = new Insets(0, 0, 5, 0);
 		gbc_textCompany.fill = GridBagConstraints.HORIZONTAL;
@@ -304,6 +307,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 		textFacebook = new JTextField();
 		textFacebook.setEditable(false);
+		textFacebook.setToolTipText("Manuel75.");
 		GridBagConstraints gbc_textFacebook = new GridBagConstraints();
 		gbc_textFacebook.insets = new Insets(0, 0, 5, 0);
 		gbc_textFacebook.fill = GridBagConstraints.HORIZONTAL;
@@ -349,7 +353,6 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		if (index >= 0 && index <= comboBoxClient.getItemCount()) {
 			comboBoxClient.setEnabled(false);
 			comboBoxClient.setSelectedIndex(index);
-			comboBoxClient.setEnabled(true);
 		}
 	}
 

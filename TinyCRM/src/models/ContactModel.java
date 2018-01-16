@@ -47,7 +47,6 @@ public class ContactModel extends CRMModel {
 			ArrayList<CRMBean> contactBeans = new ArrayList<CRMBean>();
 			Scanner inputScanner = new Scanner(inputFile);
 			inputScanner.nextLine();  // Ignore header line
-			int count = 0;
 			inputScanner.useDelimiter("[\t\n]");
 			while (inputScanner.hasNextLine()) {
 				String ID = inputScanner.next();
@@ -70,7 +69,6 @@ public class ContactModel extends CRMModel {
 				newBean.setFacebook(facebook);
 				inputScanner.nextLine();  // Skip over anything left in line
 				contactBeans.add(newBean);
-				count++;
 			}
 			inputScanner.close();
 			return contactBeans;

@@ -25,7 +25,7 @@ public class ClientController extends CRMController {
 	}
 
 	public void doEdit() {
-		System.out.println("ClientController.doRight()");
+		System.out.println("ClientController.doEdit()");
 		super.doEdit();
 	}
 

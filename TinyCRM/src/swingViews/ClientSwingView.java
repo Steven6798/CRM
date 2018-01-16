@@ -21,19 +21,19 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 
 	private static final long serialVersionUID = 1L;
 	
-	private JTextField textId;
-	private JTextField textCompany;
-	private JTextField textTelephone;
-	private JTextField textEmail;
-	private JTextField textWebsite;
-	private JTextField textFacebook;
+	protected JTextField textId;
+	protected JTextField textCompany;
+	protected JTextField textTelephone;
+	protected JTextField textEmail;
+	protected JTextField textWebsite;
+	protected JTextField textFacebook;
 
-	private JLabel idLblError;
-	private JLabel companyLblError;
-	private JLabel telephoneLblError;
-	private JLabel emailLblError;
-	private JLabel websiteLblError;
-	private JLabel facebookLblError;
+	protected JLabel idLblError;
+	protected JLabel companyLblError;
+	protected JLabel telephoneLblError;
+	protected JLabel emailLblError;
+	protected JLabel websiteLblError;
+	protected JLabel facebookLblError;
 
 	/**
 	 * Create the frame.

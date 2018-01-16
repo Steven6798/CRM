@@ -75,7 +75,6 @@ public class OpportunityModel extends CRMModel {
 	}
 
 	public String beanToFileLine(CRMBean bean) {
-
 		String result = "";
 		OpportunityBean ob = (OpportunityBean) bean;
 		result += ob.getId();

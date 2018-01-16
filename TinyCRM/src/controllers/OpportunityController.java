@@ -45,7 +45,7 @@ public class OpportunityController extends CRMController {
 	}
 
 	public void doEdit() {
-		System.out.println("OpportunityController.doRight()");
+		System.out.println("OpportunityController.doEdit()");
 		refreshDropdowns();
 		super.doEdit();
 	}
@@ -64,6 +64,11 @@ public class OpportunityController extends CRMController {
 	public void doSave() {
 		System.out.println("OpportunityController.doSave()");
 		super.doSave();
+	}
+	
+	public void doCancel() {
+		System.out.println("OpportunityController.doCancel()");
+		super.doCancel();
 	}
 
 	public void doSelectClient() {
@@ -94,8 +99,8 @@ public class OpportunityController extends CRMController {
 		if (view.getTextValue().trim().length() == 0) {
 			addValidationError("Value", "Empty Value. Required Field.");
 		}
-		else if(!view.getTextValue().matches("[0-9]*")) {
-			addValidationError("Value", "Value must only contain numbers.");
+		else if(!view.getTextValue().matches("[0-9]*\\.?[0-9]{2}")) {
+			addValidationError("Value", "Invalid Value structure.");
 		}
 	}
 	
@@ -105,7 +110,7 @@ public class OpportunityController extends CRMController {
 			addValidationError("Date", "Empty Date. Required Field.");
 		}
 		else if(!view.getTextDate().matches("[0-9]{2}.[0-9]{2}.(?:[0-9]{2})?[0-9]{2}")) {
-			addValidationError("Date", "Date must only contain numbers and slashes.");
+			addValidationError("Date", "Invalid Date Structure.");
 		}
 	}
 	

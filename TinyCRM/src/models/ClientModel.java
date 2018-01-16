@@ -22,7 +22,7 @@ public class ClientModel extends CRMModel {
 		super.doInit();
 		ArrayList<CRMBean> beans = parseBeansFromFile(CLIENTS_FILE);
 		this.setList(beans);
-		setIndex(0);
+		this.setIndex(0);
 	}
 
 	@Override
@@ -44,10 +44,9 @@ public class ClientModel extends CRMModel {
 	public ArrayList<CRMBean> parseBeansFromFile(String filename) {
 		File inputFile = new File(filename);
 		try {
-			ArrayList<CRMBean> contactBeans = new ArrayList<CRMBean>();
+			ArrayList<CRMBean> clientBeans = new ArrayList<CRMBean>();
 			Scanner inputScanner = new Scanner(inputFile);
 			inputScanner.nextLine();  // Ignore header line
-			int count = 0;
 			inputScanner.useDelimiter("[\t\n]");
 			while (inputScanner.hasNextLine()) {
 				String ID = inputScanner.next();
@@ -64,11 +63,10 @@ public class ClientModel extends CRMModel {
 				String facebook = inputScanner.next();
 				newBean.setFacebook(facebook);
 				inputScanner.nextLine();  // Skip over anything left in line
-				contactBeans.add(newBean);
-				count++;
+				clientBeans.add(newBean);
 			}
 			inputScanner.close();
-			return contactBeans;
+			return clientBeans;
 		}
 		catch (FileNotFoundException e) {
 			throw new RuntimeException("Fatal Error: Input file not Found");
@@ -76,13 +74,13 @@ public class ClientModel extends CRMModel {
 	}
 	
 	public void saveBeansToFile(String filename) {
-		ArrayList<CRMBean> contactBeans = getAllBeans();
+		ArrayList<CRMBean> clientBeans = getAllBeans();
 		File outputFile = new File(filename);
 		try {
 			PrintWriter out = new PrintWriter(outputFile);
 			// Print Header Line
 			out.println("TinyCRM Clients data file");
-			for (CRMBean bean : contactBeans) {
+			for (CRMBean bean : clientBeans) {
 				out.println(beanToFileLine(bean));
 			}
 			out.close();
