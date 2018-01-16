@@ -75,7 +75,7 @@ public class NewContactController extends ContactController {
 	@Override
 	public void validateFacebook() throws InvalidFormFieldData {
 		ContactTCRMView view = (ContactTCRMView) getView();
-		if(!view.getTextFacebook().matches("[a-zA-Z0-9\\. ]{5,}")) {
+		if(!view.getTextFacebook().matches("[a-zA-Z0-9\\. \r]{5,}")) {
 			addValidationError("Facebook", "Facebook names can only contain leters, numbers and spaces and must be at least 5 characters long.");
 		}
 		super.validateFacebook();

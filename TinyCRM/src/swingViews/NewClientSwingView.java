@@ -355,7 +355,9 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 	public void setSelectContactItems(ArrayList<CRMBean> list) {
 		comboBoxContact.removeAllItems();
 		for (CRMBean item : list) {
-			comboBoxContact.addItem(new ContactForComboBox(item.getId(), item.getDescription()));
+			if(item.getClient() ==  Long.parseLong(getTextId())) {
+				comboBoxContact.addItem(new ContactForComboBox(item.getId(), item.getDescription()));
+			}
 		}
 	}
 
@@ -377,7 +379,9 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 	public void setSelectOpportunityItems(ArrayList<CRMBean> list) {
 		comboBoxOpportunity.removeAllItems();
 		for (CRMBean item : list) {
-			comboBoxOpportunity.addItem(new OpportunityForComboBox(item.getId(), item.getDescription()));
+			if(item.getClient() ==  Long.parseLong(getTextId())) {
+				comboBoxOpportunity.addItem(new OpportunityForComboBox(item.getId(), item.getDescription()));
+			}
 		}
 	}
 

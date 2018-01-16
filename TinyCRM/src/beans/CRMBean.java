@@ -20,5 +20,7 @@ public abstract class CRMBean {
 	 * @return A descriptive String that could be used for instance in a drop-down menu
 	 */
 	public abstract String getDescription();
+	
+	public abstract long getClient();
 
 }

@@ -71,5 +71,10 @@ public class ClientBean extends CRMBean {
 		}
 		return false;
 	}
+
+	@Override
+	public long getClient() {
+		return 0;
+	}
 	
 }

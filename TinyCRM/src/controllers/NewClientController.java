@@ -44,6 +44,18 @@ public class NewClientController extends ClientController {
 	}
 	
 	@Override
+	public void doLeft() {
+		super.doLeft();
+		refreshDropdowns();
+	}
+
+	@Override
+	public void doRight() {
+		super.doRight();
+		refreshDropdowns();
+	}
+	
+	@Override
 	public void doEdit() {
 		super.doEdit();
 		refreshDropdowns();
@@ -102,8 +114,8 @@ public class NewClientController extends ClientController {
 	@Override
 	public void validateFacebook() {
 		ClientTCRMView view = (ClientTCRMView) getView();
-		if(!view.getTextFacebook().matches("[a-zA-Z0-9\\. ]{5,}")) {
-			addValidationError("Facebook", "Facebook names can only contain leters, numbers and spaces and must be at least 5 characters long.");
+		if(!view.getTextFacebook().matches("[a-zA-Z0-9\\. \r]{5,}")) {
+			addValidationError("Facebook", "Facebook names can only contain letters, numbers and spaces and must be at least 5 characters long.");
 		}
 		super.validateFacebook();
 	}
@@ -118,7 +130,7 @@ public class NewClientController extends ClientController {
 	@Override
 	protected void refreshView() {
 		super.refreshView();
-		String errorString = "";
+		String errorString;
 		NewClientSwingView cv = (NewClientSwingView) getView();
 		cv.clearFieldErrors();
 		Map<String, String> validationErrors = getValidationErrors();
@@ -129,8 +141,8 @@ public class NewClientController extends ClientController {
 			if (validationErrors.containsKey("Email")) { cv.setErrorEmail(validationErrors.get("Email")); }
 			if (validationErrors.containsKey("Website")) { cv.setErrorWebsite(validationErrors.get("Website")); }
 			if (validationErrors.containsKey("Facebook")) { cv.setErrorFacebook(validationErrors.get("Facebook")); }
+			cv.setMessagesText(errorString);
 		}
-		cv.setMessagesText(errorString);
 	}
 	
 }

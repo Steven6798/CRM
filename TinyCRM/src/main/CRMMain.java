@@ -61,6 +61,10 @@ public class CRMMain {
 		mapModuleToIndex.put("Opportunities", 2);
 		mapModuleToIndex.put("Reports", 3);
 		
+		contactController.doInit();
+		
+		opportunityController.doInit();
+		
 		clientController.doInit();
 		clientController.setSwitchModuleListener((String s) -> CRMMain.switchToModule(s));
 
