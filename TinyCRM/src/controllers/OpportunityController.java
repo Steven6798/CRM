@@ -27,6 +27,11 @@ public class OpportunityController extends CRMController {
 				System.out.println("Client Combo Box Selected");
 			}
 		});
+		ov.setSelectStatusListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Status Combo Box Selected");
+			}
+		});
 	}
 	
 	public void doInit() {
@@ -36,11 +41,13 @@ public class OpportunityController extends CRMController {
 	
 	public void doLeft() {
 		System.out.println("OpportunityController.doLeft()");
+		refreshDropdowns();
 		super.doLeft();
 	}
 
 	public void doRight() {
 		System.out.println("OpportunityController.doRight()");
+		refreshDropdowns();
 		super.doRight();
 	}
 
@@ -74,6 +81,10 @@ public class OpportunityController extends CRMController {
 	public void doSelectClient() {
 		this.refreshView();
 	}
+	
+	public void doSelectStatus() {
+		this.refreshView();
+	}
 
 	@Override
 	public void validateForm() throws InvalidFormFieldData {
@@ -81,7 +92,6 @@ public class OpportunityController extends CRMController {
 		validateDescription();
 		validateValue();
 		validateDate();
-		validateStatus();
 		if (getValidationErrors().size() > 0) {
 			throw new InvalidFormFieldData ("Invalid Form");
 		}
@@ -109,15 +119,8 @@ public class OpportunityController extends CRMController {
 		if (view.getTextDate().trim().length() == 0) {
 			addValidationError("Date", "Empty Date. Required Field.");
 		}
-		else if(!view.getTextDate().matches("[0-9]{2}.[0-9]{2}.(?:[0-9]{2})?[0-9]{2}")) {
+		else if(!view.getTextDate().matches("[0-9]{2}.[0-9]{2}.(?:[0-9]{2})?[0-9]{2}\r*")) {
 			addValidationError("Date", "Invalid Date Structure.");
-		}
-	}
-	
-	public void validateStatus() throws InvalidFormFieldData {
-		OpportunityTCRMView view = (OpportunityTCRMView) getView();
-		if (view.getTextStatus().trim().length() == 0) {
-			addValidationError("Status", "Empty Status. Required Field.");
 		}
 	}
 
@@ -125,6 +128,7 @@ public class OpportunityController extends CRMController {
 	public void refreshDropdowns() {
 		OpportunityTCRMView ov = (OpportunityTCRMView) getView();
 		ov.setSelectClientItems(CRMMain.clientModel.getAllBeans());
+		ov.setSelectStatusItems();
 	}
 	
 	protected void refreshView() {
@@ -138,7 +142,6 @@ public class OpportunityController extends CRMController {
 			if (validationErrors.containsKey("Description")) { ov.setErrorDescription(validationErrors.get("Description")); }
 			if (validationErrors.containsKey("Value")) { ov.setErrorValue(validationErrors.get("Value")); }
 			if (validationErrors.containsKey("Date")) { ov.setErrorDate(validationErrors.get("Date")); }
-			if (validationErrors.containsKey("Status")) { ov.setErrorStatus(validationErrors.get("Status")); }
 			ov.setMessagesText(errorString);
 		}
 	}

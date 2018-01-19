@@ -59,10 +59,10 @@ public class OpportunityModel extends CRMModel {
 				newBean.setSaleDescription(saleDescription);
 				String value = inputScanner.next();
 				newBean.setValue(value);
-				String date = inputScanner.next();
-				newBean.setDate(date);
 				String status = inputScanner.next();
 				newBean.setStatus(status);
+				String date = inputScanner.next();
+				newBean.setDate(date);
 				inputScanner.nextLine();  // Skip over anything left in line
 				opportunityBeans.add(newBean);
 			}
@@ -90,9 +90,9 @@ public class OpportunityModel extends CRMModel {
 		result += '\t';
 		result += ob.getValue();
 		result += '\t';
-		result += ob.getDate();
-		result += '\t';
 		result += ob.getStatus();
+		result += '\t';
+		result += ob.getDate();
 		return result;
 	}
 
