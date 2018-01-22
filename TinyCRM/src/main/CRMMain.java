@@ -61,8 +61,8 @@ public class CRMMain {
 		mapModuleToIndex.put("Opportunities", 2);
 		mapModuleToIndex.put("Reports", 3);
 		
+		// Inits necessary to initially refresh contact and opportunity combo boxes on client module.
 		contactController.doInit();
-		
 		opportunityController.doInit();
 		
 		clientController.doInit();

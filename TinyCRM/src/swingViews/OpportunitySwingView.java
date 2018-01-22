@@ -288,8 +288,11 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 
 	public void setSelectedClientIndex(int index) {
 		if (index >= 0 && index <= comboBoxClient.getItemCount()) {
-			comboBoxClient.setEnabled(false);
-			comboBoxClient.setSelectedIndex(index);
+			boolean previous = comboBoxClient.isEnabled();
+			comboBoxClient.setEnabled(false); // Avoid firing event listeners
+	  		comboBoxClient.setSelectedIndex(index);
+	  		comboBoxClient.setEnabled(true);
+	  		comboBoxClient.setEnabled(previous);
 		}
 	}
 
@@ -310,8 +313,11 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 	
 	public void setSelectedStatusIndex(int index) {
 		if (index >= 0 && index <= comboBoxStatus.getItemCount()) {
-			comboBoxStatus.setEnabled(false);
+			boolean previous = comboBoxStatus.isEnabled();
+			comboBoxStatus.setEnabled(false); // Avoid firing event listeners
 			comboBoxStatus.setSelectedIndex(index);
+			comboBoxStatus.setEnabled(true);
+			comboBoxStatus.setEnabled(previous);
 		}
 	}
 	

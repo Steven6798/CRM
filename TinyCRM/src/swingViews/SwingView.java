@@ -152,9 +152,10 @@ public abstract class SwingView extends JFrame implements TCRMView {
 	}
 	
 	public void setModuleSelected(int index) {
-		moduleComboBox.setEnabled(false); // Avoid firing event listeners
-		moduleComboBox.setSelectedIndex(index);
-		moduleComboBox.setEnabled(true);
+		boolean previous = moduleComboBox.isEnabled();
+  		moduleComboBox.setEnabled(false); // Avoid firing event listeners
+  		moduleComboBox.setSelectedIndex(index);
+ 		moduleComboBox.setEnabled(previous);
 	}
 	
 	public void setModuleSelectionItems(String[] modules) {

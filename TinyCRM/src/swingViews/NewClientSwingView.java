@@ -347,8 +347,11 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 
 	public void setSelectedContactIndex(int index) {
 		if (index >= 0 && index <= comboBoxContact.getItemCount()) {
-			comboBoxContact.setEnabled(false);
+			boolean previous = comboBoxContact.isEnabled();
+			comboBoxContact.setEnabled(false); // Avoid firing event listeners
 			comboBoxContact.setSelectedIndex(index);
+			comboBoxContact.setEnabled(true);
+			comboBoxContact.setEnabled(previous);
 		}
 	}
 
@@ -371,8 +374,11 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 
 	public void setSelectedOpportunityIndex(int index) {
 		if (index >= 0 && index <= comboBoxOpportunity.getItemCount()) {
-			comboBoxOpportunity.setEnabled(false);
+			boolean previous = comboBoxOpportunity.isEnabled();
+			comboBoxOpportunity.setEnabled(false); // Avoid firing event listeners
 			comboBoxOpportunity.setSelectedIndex(index);
+			comboBoxOpportunity.setEnabled(true);
+			comboBoxOpportunity.setEnabled(previous);
 		}
 	}
 
