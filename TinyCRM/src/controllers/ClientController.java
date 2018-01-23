@@ -14,36 +14,43 @@ public class ClientController extends CRMController {
 		super(view, model);
 	}
 
+	@Override
 	public void doLeft() {
 		System.out.println("ClientController.doLeft()");
 		super.doLeft();
 	}
 
+	@Override
 	public void doRight() {
 		System.out.println("ClientController.doRight()");
 		super.doRight();
 	}
 
+	@Override
 	public void doEdit() {
 		System.out.println("ClientController.doEdit()");
 		super.doEdit();
 	}
 
+	@Override
 	public void doAdd() {
 		System.out.println("ClientController.doAdd()");
 		super.doAdd();
 	}
 
+	@Override
 	public void doDelete() {
 		System.out.println("ClientController.doDelete()");
 		super.doDelete();
 	}
 
+	@Override
 	public void doSave() {
 		System.out.println("ClientController.doSave()");
 		super.doSave();
 	}
 
+	@Override
 	public void validateForm() throws InvalidFormFieldData {
 		getValidationErrors().clear();
 		validateCompany();
@@ -87,6 +94,7 @@ public class ClientController extends CRMController {
 		}
 	}
 	
+	@Override
 	protected void refreshView() {
 		super.refreshView();
 		String errorString = "";
@@ -104,6 +112,7 @@ public class ClientController extends CRMController {
 		cv.setMessagesText(errorString);
 	}
 
+	@Override
 	public void refreshDropdowns() {}
 	
 }

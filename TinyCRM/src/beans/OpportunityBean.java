@@ -17,6 +17,7 @@ public class OpportunityBean extends CRMBean {
 		date = "";
 	}
 	
+	@Override
 	public long getClient() {
 		return client;
 	}

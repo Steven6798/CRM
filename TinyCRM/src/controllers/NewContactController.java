@@ -10,6 +10,16 @@ public class NewContactController extends ContactController {
 	public NewContactController(SwingView contactView, CRMModel contactModel, CRMModel clientModel) {
 		super(contactView, contactModel, clientModel);
 	}
+	
+	@Override
+	public void doLeft() {
+		super.doLeft();
+	}
+
+	@Override
+	public void doRight() {
+		super.doRight();
+	}
 
 	@Override
 	public void validateFirstName() throws InvalidFormFieldData {
@@ -49,7 +59,7 @@ public class NewContactController extends ContactController {
 	public void validateCompany() throws InvalidFormFieldData {
 		ContactTCRMView view = (ContactTCRMView) getView();
 		if(!view.getTextCompany().matches("(?!\\s)(?!.*\\s$)(?=.*[a-zA-Z0-9])[a-zA-Z0-9 '~?!&]{2,}")) {
-			addValidationError("Company", "Company names must only contain letters, numbers, and the symbols '~?!&.");
+			addValidationError("Company", "Company names can only contain letters, numbers, and the symbols '~?!&.");
 		}
 		super.validateCompany();
 	}

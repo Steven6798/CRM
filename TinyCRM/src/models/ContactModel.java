@@ -41,6 +41,7 @@ public class ContactModel extends CRMModel {
 		saveBeansToFile(CONTACTS_FILE);
 	}
 
+	@Override
 	public ArrayList<CRMBean> parseBeansFromFile(String filename) {
 		File inputFile = new File(filename);
 		try {
@@ -104,6 +105,7 @@ public class ContactModel extends CRMModel {
 		return result;
 	}
 
+	@Override
 	public void saveBeansToFile(String filename) {
 		ArrayList<CRMBean> contactBeans = getAllBeans();
 		File outputFile = new File(filename);

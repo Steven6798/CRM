@@ -58,7 +58,6 @@ public class NewClientController extends ClientController {
 	@Override
 	public void doEdit() {
 		super.doEdit();
-		refreshDropdowns();
 	}
 	
 	@Override
@@ -79,7 +78,7 @@ public class NewClientController extends ClientController {
 	public void validateCompany() {
 		ClientTCRMView view = (ClientTCRMView) getView();
 		if(!view.getTextCompany().matches("(?!\\s)(?!.*\\s$)(?=.*[a-zA-Z0-9])[a-zA-Z0-9 '~?!&]{2,}")) {
-			addValidationError("Company", "Company names must only contain letters, numbers, and the symbols '~?!&.");
+			addValidationError("Company", "Company names can only contain letters, numbers, and the symbols '~?!&.");
 		}
 		super.validateCompany();
 	}

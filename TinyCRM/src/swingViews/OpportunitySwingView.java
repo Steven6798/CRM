@@ -282,10 +282,12 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 	public void setTextValue(String textValue)   { this.textValue.setText(textValue); }
 	public void setTextDate(String textDate)     { this.textDate.setText(textDate); }
 
+	@Override
 	public int getSelectedClientIndex() {
 		return comboBoxClient.getSelectedIndex();
 	}
 
+	@Override
 	public void setSelectedClientIndex(int index) {
 		if (index >= 0 && index <= comboBoxClient.getItemCount()) {
 			boolean previous = comboBoxClient.isEnabled();
@@ -296,6 +298,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		}
 	}
 
+	@Override
 	public void setSelectClientItems(ArrayList<CRMBean> list) {
 		comboBoxClient.removeAllItems();
 		for (CRMBean item : list) {
@@ -303,14 +306,17 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		}
 	}
 
+	@Override
 	public void setSelectClientListener(ActionListener listener) {
 		comboBoxClient.addActionListener(listener);
 	}
 	
+	@Override
 	public int getSelectedStatusIndex() {
 		return comboBoxStatus.getSelectedIndex();
 	}
 	
+	@Override
 	public void setSelectedStatusIndex(int index) {
 		if (index >= 0 && index <= comboBoxStatus.getItemCount()) {
 			boolean previous = comboBoxStatus.isEnabled();
@@ -321,6 +327,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		}
 	}
 	
+	@Override
 	public void setSelectStatusItems() {
 		comboBoxStatus.removeAllItems();
 		for (int i = 0; i < 4; i++) {
@@ -328,6 +335,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		}
 	}
 	
+	@Override
 	public void setSelectStatusListener(ActionListener listener) {
 		comboBoxStatus.addActionListener(listener);
 	}
@@ -340,6 +348,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 	public void setErrorValue(String errorValue)   { valueLblError.setText(errorValue); }
 	public void setErrorDate(String errorDate)     { dateLblError.setText(errorDate); }
 
+	@Override
 	public void beanToForm(CRMBean bean) {
 		OpportunityBean ob = (OpportunityBean) bean;
 		this.setTextId(""+ob.getId());
@@ -360,6 +369,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		this.setTextDate(ob.getDate());
 	}
 
+	@Override
 	public void formToBean(CRMBean bean) {
 		OpportunityBean ob = (OpportunityBean) bean;
 		ob.setClient(((ClientForComboBox) comboBoxClient.getSelectedItem()).getId());
@@ -369,6 +379,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		ob.setDate(textDate.getText());
 	}
 
+	@Override
 	public void enableEditMode() { 
 		super.enableEditMode();
 		comboBoxClient.setEnabled(true);
@@ -377,6 +388,8 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		comboBoxStatus.setEnabled(true);
 		textDate.setEditable(true);
 	}
+	
+	@Override
 	public void disableEditMode() {
 		super.disableEditMode();
 		textId.setEditable(false);
@@ -386,7 +399,8 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		comboBoxStatus.setEnabled(false);
 		textDate.setEditable(false);
 	}
-
+	
+	@Override
 	public void clearForm() {
 		textId.setText("");
 		if (comboBoxClient.getItemCount() > 0) { comboBoxClient.setSelectedIndex(0); }
@@ -397,6 +411,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		clearFieldErrors();
 	}
 
+	@Override
 	public void clearFieldErrors() {
 		idLblError.setText("");
 		clientLblError.setText("");

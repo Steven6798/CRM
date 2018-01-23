@@ -41,6 +41,7 @@ public class OpportunityModel extends CRMModel {
 		saveBeansToFile(OPPORTUNITIES_FILE);
 	}
 
+	@Override
 	public ArrayList<CRMBean> parseBeansFromFile(String filename) {
 		File inputFile = new File(filename);
 		try {
@@ -96,6 +97,7 @@ public class OpportunityModel extends CRMModel {
 		return result;
 	}
 
+	@Override
 	public void saveBeansToFile(String filename) {
 		ArrayList<CRMBean> opportunityBeans = getAllBeans();
 		File outputFile = new File(filename);

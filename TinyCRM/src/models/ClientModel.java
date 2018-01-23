@@ -41,6 +41,7 @@ public class ClientModel extends CRMModel {
 		saveBeansToFile(CLIENTS_FILE);
 	}
 	
+	@Override
 	public ArrayList<CRMBean> parseBeansFromFile(String filename) {
 		File inputFile = new File(filename);
 		try {
@@ -73,23 +74,6 @@ public class ClientModel extends CRMModel {
 		}
 	}
 	
-	public void saveBeansToFile(String filename) {
-		ArrayList<CRMBean> clientBeans = getAllBeans();
-		File outputFile = new File(filename);
-		try {
-			PrintWriter out = new PrintWriter(outputFile);
-			// Print Header Line
-			out.println("TinyCRM Clients data file");
-			for (CRMBean bean : clientBeans) {
-				out.println(beanToFileLine(bean));
-			}
-			out.close();
-		}
-		catch (FileNotFoundException e) {
-			throw new RuntimeException("Fatal Error: Output file not Found");
-		}
-	}
-	
 	public String beanToFileLine(CRMBean bean) {
 		String result = "";
 		ClientBean cb = (ClientBean) bean;
@@ -107,4 +91,22 @@ public class ClientModel extends CRMModel {
 		return result;
 	}
 
+	@Override
+	public void saveBeansToFile(String filename) {
+		ArrayList<CRMBean> clientBeans = getAllBeans();
+		File outputFile = new File(filename);
+		try {
+			PrintWriter out = new PrintWriter(outputFile);
+			// Print Header Line
+			out.println("TinyCRM Clients data file");
+			for (CRMBean bean : clientBeans) {
+				out.println(beanToFileLine(bean));
+			}
+			out.close();
+		}
+		catch (FileNotFoundException e) {
+			throw new RuntimeException("Fatal Error: Output file not Found");
+		}
+	}
+	
 }

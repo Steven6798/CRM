@@ -228,7 +228,6 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 		centerGrid.add(facebookLblError, gbc_facebookLblError);
 		
 		this.setMessagesText("No Clients in the CRM");
-		
 	}
 	
 	public String getTextId()        { return textId.getText(); }
@@ -257,6 +256,7 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 	public void setErrorWebsite(String errorWebsite)     { websiteLblError.setText(errorWebsite); }
 	public void setErrorFacebook(String errorFacebook)   { facebookLblError.setText(errorFacebook); }
 	
+	@Override
 	public void enableEditMode() { 
 		super.enableEditMode();
 		textCompany.setEditable(true);
@@ -266,6 +266,7 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 		textFacebook.setEditable(true);
 	}
 	
+	@Override
 	public void beanToForm(CRMBean bean) {
 		ClientBean cb = (ClientBean) bean;
 		this.setTextId(""+cb.getId());
@@ -276,6 +277,7 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 		this.setTextFacebook(cb.getFacebook());
 	}
 	
+	@Override
 	public void formToBean(CRMBean bean) {
 		ClientBean cb = (ClientBean) bean;
 		cb.setCompany(textCompany.getText());
@@ -285,6 +287,7 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 		cb.setFacebook(textFacebook.getText());
 	}
 	
+	@Override
 	public void disableEditMode() {
 		super.disableEditMode();
 		// Make all fields not editable
@@ -296,6 +299,7 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 		textFacebook.setEditable(false);
 	}
 
+	@Override
 	public void clearForm() {
 		textId.setText("");
 		textCompany.setText("");
@@ -306,6 +310,7 @@ public class ClientSwingView extends SwingView implements ClientTCRMView {
 		clearFieldErrors();
 	}
 	
+	@Override
 	public void clearFieldErrors() {
 		idLblError.setText("");
 		companyLblError.setText("");

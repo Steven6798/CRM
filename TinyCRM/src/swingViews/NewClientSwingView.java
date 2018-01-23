@@ -90,6 +90,9 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 	private JLabel contactLblError;
 	private JLabel opportunityLblError;
 	
+	/**
+	 * Create the frame.
+	 */
 	public NewClientSwingView() {
 		super();
 		setTitle("Clients");
@@ -341,10 +344,12 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 		this.setMessagesText("No Clients in the CRM");
 	}
 
+	@Override
 	public int getSelectedContactIndex() {
 		return comboBoxContact.getSelectedIndex();
 	}
 
+	@Override
 	public void setSelectedContactIndex(int index) {
 		if (index >= 0 && index <= comboBoxContact.getItemCount()) {
 			boolean previous = comboBoxContact.isEnabled();
@@ -355,6 +360,7 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 		}
 	}
 
+	@Override
 	public void setSelectContactItems(ArrayList<CRMBean> list) {
 		comboBoxContact.removeAllItems();
 		for (CRMBean item : list) {
@@ -364,14 +370,17 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 		}
 	}
 
+	@Override
 	public void setSelectContactListener(ActionListener listener) {
 		comboBoxContact.addActionListener(listener);
 	}
 	
+	@Override
 	public int getSelectedOpportunityIndex() {
 		return comboBoxOpportunity.getSelectedIndex();
 	}
 
+	@Override
 	public void setSelectedOpportunityIndex(int index) {
 		if (index >= 0 && index <= comboBoxOpportunity.getItemCount()) {
 			boolean previous = comboBoxOpportunity.isEnabled();
@@ -382,6 +391,7 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 		}
 	}
 
+	@Override
 	public void setSelectOpportunityItems(ArrayList<CRMBean> list) {
 		comboBoxOpportunity.removeAllItems();
 		for (CRMBean item : list) {
@@ -391,6 +401,7 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 		}
 	}
 
+	@Override
 	public void setSelectOpportunityListener(ActionListener listener) {
 		comboBoxOpportunity.addActionListener(listener);
 	}

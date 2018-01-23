@@ -34,45 +34,50 @@ public class OpportunityController extends CRMController {
 		});
 	}
 	
+	@Override
 	public void doInit() {
-		super.doInit();
 		refreshDropdowns();
+		super.doInit();
 	}
 	
+	@Override
 	public void doLeft() {
 		System.out.println("OpportunityController.doLeft()");
-		refreshDropdowns();
 		super.doLeft();
 	}
 
+	@Override
 	public void doRight() {
 		System.out.println("OpportunityController.doRight()");
-		refreshDropdowns();
 		super.doRight();
 	}
 
+	@Override
 	public void doEdit() {
 		System.out.println("OpportunityController.doEdit()");
-		refreshDropdowns();
 		super.doEdit();
 	}
 
+	@Override
 	public void doAdd() {
 		System.out.println("OpportunityController.doAdd()");
 		refreshDropdowns();
 		super.doAdd();
 	}
 
+	@Override
 	public void doDelete() {
 		System.out.println("OpportunityController.doDelete()");
 		super.doDelete();
 	}
 
+	@Override
 	public void doSave() {
 		System.out.println("OpportunityController.doSave()");
 		super.doSave();
 	}
 	
+	@Override
 	public void doCancel() {
 		System.out.println("OpportunityController.doCancel()");
 		super.doCancel();
@@ -131,6 +136,7 @@ public class OpportunityController extends CRMController {
 		ov.setSelectStatusItems();
 	}
 	
+	@Override
 	protected void refreshView() {
 		super.refreshView();
 		String errorString;

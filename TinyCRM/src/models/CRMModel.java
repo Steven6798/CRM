@@ -59,16 +59,12 @@ public abstract class CRMModel {
 	/**
 	 * Handle SAVE RECORD action
 	 */
-	public void doSave() {
-
-	}
+	public void doSave() {}
 	
 	/**
 	 * Handle CANCEL (Edit) Action
 	 */
-	public void doCancel() {
-
-	}
+	public void doCancel() {}
 
 	/**
 	 * Returns the ith Bean in the list
