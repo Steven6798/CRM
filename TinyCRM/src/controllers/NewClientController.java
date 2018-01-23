@@ -58,6 +58,7 @@ public class NewClientController extends ClientController {
 	@Override
 	public void doEdit() {
 		super.doEdit();
+		refreshDropdowns();
 	}
 	
 	@Override

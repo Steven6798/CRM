@@ -425,14 +425,6 @@ public class NewClientSwingView extends ClientSwingView implements NewClientTCRM
 	}
 	
 	@Override
-	public void formToBean(CRMBean bean) {
-		super.formToBean(bean);
-		NewClientBean cb = (NewClientBean) bean;
-		cb.setContact(((ContactForComboBox) comboBoxContact.getSelectedItem()).getId());
-		cb.setOpportunity(((OpportunityForComboBox) comboBoxOpportunity.getSelectedItem()).getId());
-	}
-	
-	@Override
 	public void enableEditMode() { 
 		super.enableEditMode();
 		comboBoxContact.setEnabled(true);
