@@ -23,7 +23,6 @@ public interface ContactTCRMView extends TCRMView {
 	void setTextEmail(String textEmail);
 	void setTextFacebook(String textFacebook);
 
-	// TODO: Verify MVC compliance of these methods
 	int getSelectedClientIndex();
 	void setSelectedClientIndex(int index);
 	void setSelectClientItems(ArrayList<CRMBean> list);

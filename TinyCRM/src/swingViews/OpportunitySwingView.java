@@ -59,7 +59,14 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 	private JTextField textDescription;
 	private JTextField textValue;
 	private JTextField textDate;
-	private JTextField textStatus;
+	private JComboBox<String> comboBoxStatus;
+	
+	private String[] status = {
+	         "Verbal Proposition",
+	         "Written Proposition",
+	         "Win",
+	         "lose"
+	};
 
 	private JLabel idLblError;
 	private JLabel clientLblError;
@@ -88,35 +95,6 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		gbl_centerGrid.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		gbl_centerGrid.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,Double.MIN_VALUE};
 		centerGrid.setLayout(gbl_centerGrid);
-		
-		JLabel lblClient = new JLabel("Client");
-		GridBagConstraints gbc_lblClient = new GridBagConstraints();
-		gbc_lblClient.anchor = GridBagConstraints.EAST;
-		gbc_lblClient.insets = new Insets(0, 0, 5, 5);
-		gbc_lblClient.gridx = 0;
-		gbc_lblClient.gridy = 8;
-		centerGrid.add(lblClient, gbc_lblClient);
-
-		comboBoxClient = new JComboBox<ClientForComboBox>();
-		comboBoxClient.setEditable(false);
-		comboBoxClient.setEnabled(false);
-		GridBagConstraints gbc_comboBoxClient = new GridBagConstraints();
-		gbc_comboBoxClient.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBoxClient.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxClient.gridx = 1;
-		gbc_comboBoxClient.gridy = 8;
-		centerGrid.add(comboBoxClient, gbc_comboBoxClient);
-
-		clientLblError = new JLabel("New label");
-		clientLblError.setForeground(Color.RED);
-		clientLblError.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		GridBagConstraints gbc_clientLblError = new GridBagConstraints();
-		gbc_clientLblError.anchor = GridBagConstraints.WEST;
-		gbc_clientLblError.insets = new Insets(0, 0, 5, 0);
-		gbc_clientLblError.gridx = 1;
-		gbc_clientLblError.gridy = 9;
-		centerGrid.add(clientLblError, gbc_clientLblError);
-		//comboBoxClient.setColumns(10);
 
 		JLabel lblId = new JLabel("ID");
 		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -146,6 +124,34 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		gbc_IdLblError.gridx = 1;
 		gbc_IdLblError.gridy = 1;
 		centerGrid.add(idLblError, gbc_IdLblError);
+		
+		JLabel lblClient = new JLabel("Client");
+		GridBagConstraints gbc_lblClient = new GridBagConstraints();
+		gbc_lblClient.anchor = GridBagConstraints.EAST;
+		gbc_lblClient.insets = new Insets(0, 0, 5, 5);
+		gbc_lblClient.gridx = 0;
+		gbc_lblClient.gridy = 2;
+		centerGrid.add(lblClient, gbc_lblClient);
+
+		comboBoxClient = new JComboBox<ClientForComboBox>();
+		comboBoxClient.setEditable(false);
+		comboBoxClient.setEnabled(false);
+		GridBagConstraints gbc_comboBoxClient = new GridBagConstraints();
+		gbc_comboBoxClient.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxClient.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxClient.gridx = 1;
+		gbc_comboBoxClient.gridy = 2;
+		centerGrid.add(comboBoxClient, gbc_comboBoxClient);
+
+		clientLblError = new JLabel("New label");
+		clientLblError.setForeground(Color.RED);
+		clientLblError.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		GridBagConstraints gbc_clientLblError = new GridBagConstraints();
+		gbc_clientLblError.anchor = GridBagConstraints.WEST;
+		gbc_clientLblError.insets = new Insets(0, 0, 5, 0);
+		gbc_clientLblError.gridx = 1;
+		gbc_clientLblError.gridy = 3;
+		centerGrid.add(clientLblError, gbc_clientLblError);
 
 		JLabel lblDescription = new JLabel("Description");
 		lblDescription.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -153,7 +159,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		gbc_lblDescription.anchor = GridBagConstraints.EAST;
 		gbc_lblDescription.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDescription.gridx = 0;
-		gbc_lblDescription.gridy = 2;
+		gbc_lblDescription.gridy = 4;
 		centerGrid.add(lblDescription, gbc_lblDescription);
 
 		textDescription = new JTextField();
@@ -162,7 +168,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		gbc_txtDescription.insets = new Insets(0, 0, 5, 0);
 		gbc_txtDescription.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtDescription.gridx = 1;
-		gbc_txtDescription.gridy = 2;
+		gbc_txtDescription.gridy = 4;
 		centerGrid.add(textDescription, gbc_txtDescription);
 		textDescription.setColumns(10);
 
@@ -173,7 +179,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		gbc_descriptionLblbError.anchor = GridBagConstraints.WEST;
 		gbc_descriptionLblbError.insets = new Insets(0, 0, 5, 0);
 		gbc_descriptionLblbError.gridx = 1;
-		gbc_descriptionLblbError.gridy = 3;
+		gbc_descriptionLblbError.gridy = 5;
 		centerGrid.add(descriptionLblError, gbc_descriptionLblbError);
 
 		JLabel lblValue = new JLabel("Value");
@@ -182,16 +188,17 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		gbc_lblValue.anchor = GridBagConstraints.EAST;
 		gbc_lblValue.insets = new Insets(0, 0, 5, 5);
 		gbc_lblValue.gridx = 0;
-		gbc_lblValue.gridy = 4;
+		gbc_lblValue.gridy = 6;
 		centerGrid.add(lblValue, gbc_lblValue);
 
 		textValue = new JTextField();
 		textValue.setEditable(false);
+		textValue.setToolTipText("2000.00");
 		GridBagConstraints gbc_textValue = new GridBagConstraints();
 		gbc_textValue.insets = new Insets(0, 0, 5, 0);
 		gbc_textValue.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textValue.gridx = 1;
-		gbc_textValue.gridy = 4;
+		gbc_textValue.gridy = 6;
 		centerGrid.add(textValue, gbc_textValue);
 		textValue.setColumns(10);
 
@@ -202,15 +209,43 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		gbc_valueLblError.anchor = GridBagConstraints.WEST;
 		gbc_valueLblError.insets = new Insets(0, 0, 5, 0);
 		gbc_valueLblError.gridx = 1;
-		gbc_valueLblError.gridy = 5;
+		gbc_valueLblError.gridy = 7;
 		centerGrid.add(valueLblError, gbc_valueLblError);
+		
+		JLabel lblStatus = new JLabel("Status");
+		GridBagConstraints gbc_lblStatus = new GridBagConstraints();
+		gbc_lblStatus.anchor = GridBagConstraints.EAST;
+		gbc_lblStatus.insets = new Insets(0, 0, 5, 5);
+		gbc_lblStatus.gridx = 0;
+		gbc_lblStatus.gridy = 8;
+		centerGrid.add(lblStatus, gbc_lblStatus);
+
+		comboBoxStatus = new JComboBox<String>();
+		comboBoxStatus.setEditable(false);
+		comboBoxStatus.setEnabled(false);
+		GridBagConstraints gbc_comboBoxStatus = new GridBagConstraints();
+		gbc_comboBoxStatus.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxStatus.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxStatus.gridx = 1;
+		gbc_comboBoxStatus.gridy = 8;
+		centerGrid.add(comboBoxStatus, gbc_comboBoxStatus);
+
+		statusLblError = new JLabel("New label");
+		statusLblError.setForeground(Color.RED);
+		statusLblError.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		GridBagConstraints gbc_statusLblError = new GridBagConstraints();
+		gbc_statusLblError.anchor = GridBagConstraints.WEST;
+		gbc_statusLblError.insets = new Insets(0, 0, 5, 0);
+		gbc_statusLblError.gridx = 1;
+		gbc_statusLblError.gridy = 9;
+		centerGrid.add(statusLblError, gbc_statusLblError);
 
 		JLabel lblDate = new JLabel("Date");
 		GridBagConstraints gbc_lblDate = new GridBagConstraints();
 		gbc_lblDate.anchor = GridBagConstraints.EAST;
 		gbc_lblDate.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDate.gridx = 0;
-		gbc_lblDate.gridy = 6;
+		gbc_lblDate.gridy = 10;
 		centerGrid.add(lblDate, gbc_lblDate);
 
 		textDate = new JTextField();
@@ -220,7 +255,7 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		gbc_textDate.insets = new Insets(0, 0, 5, 0);
 		gbc_textDate.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textDate.gridx = 1;
-		gbc_textDate.gridy = 6;
+		gbc_textDate.gridy = 10;
 		centerGrid.add(textDate, gbc_textDate);
 		textDate.setColumns(10);
 
@@ -231,36 +266,8 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		gbc_dateLblError.anchor = GridBagConstraints.WEST;
 		gbc_dateLblError.insets = new Insets(0, 0, 5, 0);
 		gbc_dateLblError.gridx = 1;
-		gbc_dateLblError.gridy = 7;
+		gbc_dateLblError.gridy = 11;
 		centerGrid.add(dateLblError, gbc_dateLblError);
-
-		JLabel lblStatus = new JLabel("Status");
-		GridBagConstraints gbc_lblStatus = new GridBagConstraints();
-		gbc_lblStatus.anchor = GridBagConstraints.EAST;
-		gbc_lblStatus.insets = new Insets(0, 0, 5, 5);
-		gbc_lblStatus.gridx = 0;
-		gbc_lblStatus.gridy = 10;
-		centerGrid.add(lblStatus, gbc_lblStatus);
-
-		textStatus = new JTextField();
-		textStatus.setEditable(false);
-		GridBagConstraints gbc_textStatus = new GridBagConstraints();
-		gbc_textStatus.insets = new Insets(0, 0, 5, 0);
-		gbc_textStatus.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textStatus.gridx = 1;
-		gbc_textStatus.gridy = 10;
-		centerGrid.add(textStatus, gbc_textStatus);
-		textStatus.setColumns(10);
-
-		statusLblError = new JLabel("New label");
-		statusLblError.setForeground(Color.RED);
-		statusLblError.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		GridBagConstraints gbc_statusLblError = new GridBagConstraints();
-		gbc_statusLblError.anchor = GridBagConstraints.WEST;
-		gbc_statusLblError.insets = new Insets(0, 0, 5, 0);
-		gbc_statusLblError.gridx = 1;
-		gbc_statusLblError.gridy = 11;
-		centerGrid.add(statusLblError, gbc_statusLblError);
 
 		this.setMessagesText("No Opportunities in the CRM");
 	}
@@ -269,26 +276,29 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 	public String getTextDescription() { return textDescription.getText(); }
 	public String getTextValue()  { return textValue.getText(); }
 	public String getTextDate()   { return textDate.getText(); }
-	public String getTextStatus() { return textStatus.getText(); }
 
 	public void setTextId(String textId)               { this.textId.setText(textId); }
 	public void setTextDescription(String textDescription) { this.textDescription.setText(textDescription); }
 	public void setTextValue(String textValue)   { this.textValue.setText(textValue); }
 	public void setTextDate(String textDate)     { this.textDate.setText(textDate); }
-	public void setTextStatus(String textStatus)  { this.textStatus.setText(textStatus); }
 
+	@Override
 	public int getSelectedClientIndex() {
 		return comboBoxClient.getSelectedIndex();
 	}
 
+	@Override
 	public void setSelectedClientIndex(int index) {
 		if (index >= 0 && index <= comboBoxClient.getItemCount()) {
-			comboBoxClient.setEnabled(false);
-			comboBoxClient.setSelectedIndex(index);
-			comboBoxClient.setEnabled(true);
+			boolean previous = comboBoxClient.isEnabled();
+			comboBoxClient.setEnabled(false); // Avoid firing event listeners
+	  		comboBoxClient.setSelectedIndex(index);
+	  		comboBoxClient.setEnabled(true);
+	  		comboBoxClient.setEnabled(previous);
 		}
 	}
 
+	@Override
 	public void setSelectClientItems(ArrayList<CRMBean> list) {
 		comboBoxClient.removeAllItems();
 		for (CRMBean item : list) {
@@ -296,20 +306,49 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 		}
 	}
 
+	@Override
 	public void setSelectClientListener(ActionListener listener) {
 		comboBoxClient.addActionListener(listener);
+	}
+	
+	@Override
+	public int getSelectedStatusIndex() {
+		return comboBoxStatus.getSelectedIndex();
+	}
+	
+	@Override
+	public void setSelectedStatusIndex(int index) {
+		if (index >= 0 && index <= comboBoxStatus.getItemCount()) {
+			boolean previous = comboBoxStatus.isEnabled();
+			comboBoxStatus.setEnabled(false); // Avoid firing event listeners
+			comboBoxStatus.setSelectedIndex(index);
+			comboBoxStatus.setEnabled(true);
+			comboBoxStatus.setEnabled(previous);
+		}
+	}
+	
+	@Override
+	public void setSelectStatusItems() {
+		comboBoxStatus.removeAllItems();
+		for (int i = 0; i < 4; i++) {
+			comboBoxStatus.addItem(status[i]);
+		}
+	}
+	
+	@Override
+	public void setSelectStatusListener(ActionListener listener) {
+		comboBoxStatus.addActionListener(listener);
 	}
 
 	public String getErrorDescription() { return descriptionLblError.getText(); }
 	public String getErrorValue() { return valueLblError.getText(); }
 	public String getErrorDate()   { return dateLblError.getText(); }
-	public String getErrorStatus() { return statusLblError.getText(); }
 
 	public void setErrorDescription(String errorDescription) { descriptionLblError.setText(errorDescription); }
 	public void setErrorValue(String errorValue)   { valueLblError.setText(errorValue); }
 	public void setErrorDate(String errorDate)     { dateLblError.setText(errorDate); }
-	public void setErrorStatus(String errorStatus) { statusLblError.setText(errorStatus); }
 
+	@Override
 	public void beanToForm(CRMBean bean) {
 		OpportunityBean ob = (OpportunityBean) bean;
 		this.setTextId(""+ob.getId());
@@ -319,56 +358,67 @@ public class OpportunitySwingView extends SwingView implements OpportunityTCRMVi
 				this.setSelectedClientIndex(i);
 			}
 		}
-		this.setTextDescription(ob.getDescription());
+		this.setTextDescription(ob.getSaleDescription());
 		this.setTextValue(ob.getValue());
+		for (int i = 0; i < comboBoxStatus.getItemCount(); i++) {
+			String item = comboBoxStatus.getItemAt(i);
+			if (item.equals(ob.getStatus())) {
+				this.setSelectedStatusIndex(i);
+			}
+		}
 		this.setTextDate(ob.getDate());
-		this.setTextStatus(ob.getStatus());
 	}
 
+	@Override
 	public void formToBean(CRMBean bean) {
 		OpportunityBean ob = (OpportunityBean) bean;
 		ob.setClient(((ClientForComboBox) comboBoxClient.getSelectedItem()).getId());
 		ob.setSaleDescription(textDescription.getText());
 		ob.setValue(textValue.getText());
+		ob.setStatus((String) comboBoxStatus.getSelectedItem());
 		ob.setDate(textDate.getText());
-		ob.setStatus(textStatus.getText());
 	}
 
+	@Override
 	public void enableEditMode() { 
 		super.enableEditMode();
 		comboBoxClient.setEnabled(true);
 		textDescription.setEditable(true);
 		textValue.setEditable(true);
+		comboBoxStatus.setEnabled(true);
 		textDate.setEditable(true);
-		textStatus.setEditable(true);
 	}
+	
+	@Override
 	public void disableEditMode() {
 		super.disableEditMode();
 		textId.setEditable(false);
 		comboBoxClient.setEnabled(false);
 		textDescription.setEditable(false);
 		textValue.setEditable(false);
+		comboBoxStatus.setEnabled(false);
 		textDate.setEditable(false);
-		textStatus.setEditable(false);
 	}
-
+	
+	@Override
 	public void clearForm() {
 		textId.setText("");
 		if (comboBoxClient.getItemCount() > 0) { comboBoxClient.setSelectedIndex(0); }
 		textDescription.setText("");
 		textValue.setText("");
+		if (comboBoxStatus.getItemCount() > 0) { comboBoxStatus.setSelectedIndex(0); }
 		textDate.setText("");
-		textStatus.setText("");
 		clearFieldErrors();
 	}
 
+	@Override
 	public void clearFieldErrors() {
 		idLblError.setText("");
 		clientLblError.setText("");
 		descriptionLblError.setText("");
 		valueLblError.setText("");
-		dateLblError.setText("");
 		statusLblError.setText("");
+		dateLblError.setText("");
 	}
 
 }

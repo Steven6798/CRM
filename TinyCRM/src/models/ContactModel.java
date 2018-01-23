@@ -41,13 +41,13 @@ public class ContactModel extends CRMModel {
 		saveBeansToFile(CONTACTS_FILE);
 	}
 
+	@Override
 	public ArrayList<CRMBean> parseBeansFromFile(String filename) {
 		File inputFile = new File(filename);
 		try {
 			ArrayList<CRMBean> contactBeans = new ArrayList<CRMBean>();
 			Scanner inputScanner = new Scanner(inputFile);
 			inputScanner.nextLine();  // Ignore header line
-			int count = 0;
 			inputScanner.useDelimiter("[\t\n]");
 			while (inputScanner.hasNextLine()) {
 				String ID = inputScanner.next();
@@ -70,7 +70,6 @@ public class ContactModel extends CRMModel {
 				newBean.setFacebook(facebook);
 				inputScanner.nextLine();  // Skip over anything left in line
 				contactBeans.add(newBean);
-				count++;
 			}
 			inputScanner.close();
 			return contactBeans;
@@ -106,6 +105,7 @@ public class ContactModel extends CRMModel {
 		return result;
 	}
 
+	@Override
 	public void saveBeansToFile(String filename) {
 		ArrayList<CRMBean> contactBeans = getAllBeans();
 		File outputFile = new File(filename);

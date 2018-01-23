@@ -68,11 +68,11 @@ public abstract class CRMController {
 		System.out.println("CRMController.doLeft()");
 		if (getModel().getIndex() > 0) {
 			this.getModel().doLeft();
-			if (model.getCount() > 0) {
-				view.beanToForm(model.getCurrentBean());
-			}
 		}
-		this.refreshView();
+		if (model.getCount() > 0) {
+			view.beanToForm(model.getCurrentBean());
+			this.refreshView();
+		}
 	};
 
 	public void doRight() {

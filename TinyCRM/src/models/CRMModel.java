@@ -48,22 +48,23 @@ public abstract class CRMModel {
 	public void doDelete() {
 		// TODO: Verify that integrity is preserved before deleting. E.g. dangling references
 		list.remove(index);
-		index = index-1;
+		if (list.size() > 0) {
+			index = Math.max(index-1, 0);
+		}
+		else {
+			index = 0;
+		}
 	}
 	
 	/**
 	 * Handle SAVE RECORD action
 	 */
-	public void doSave() {
-
-	}
+	public void doSave() {}
 	
 	/**
 	 * Handle CANCEL (Edit) Action
 	 */
-	public void doCancel() {
-
-	}
+	public void doCancel() {}
 
 	/**
 	 * Returns the ith Bean in the list

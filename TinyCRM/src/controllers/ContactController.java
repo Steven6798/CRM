@@ -29,38 +29,44 @@ public class ContactController extends CRMController {
 		});
 	}
 
+	@Override
 	public void doInit() {
 		super.doInit();
 		refreshDropdowns();
 	}
 	
+	@Override
 	public void doLeft() {
 		System.out.println("ContactController.doLeft()");
 		super.doLeft();
 	}
 
+	@Override
 	public void doRight() {
 		System.out.println("ContactController.doRight()");
 		super.doRight();
 	}
 
+	@Override
 	public void doEdit() {
-		System.out.println("ContactController.doRight()");
-		refreshDropdowns();
+		System.out.println("ContactController.doEdit()");
 		super.doEdit();
 	}
 
+	@Override
 	public void doAdd() {
 		System.out.println("ContactController.doAdd()");
 		refreshDropdowns();
 		super.doAdd();
 	}
 
+	@Override
 	public void doDelete() {
 		System.out.println("ContactController.doDelete()");
 		super.doDelete();
 	}
 
+	@Override
 	public void doSave() {
 		System.out.println("ContactController.doSave()");
 		super.doSave();
@@ -70,6 +76,7 @@ public class ContactController extends CRMController {
 		this.refreshView();
 	}
 
+	@Override
 	public void validateForm() throws InvalidFormFieldData {
 		getValidationErrors().clear();
 		validateFirstName();
@@ -119,11 +126,13 @@ public class ContactController extends CRMController {
 		}
 	}
 
+	@Override
 	public void refreshDropdowns() {
 		ContactTCRMView cv = (ContactTCRMView) getView();
 		cv.setSelectClientItems(CRMMain.clientModel.getAllBeans());
 	}
 
+	@Override
 	protected void refreshView() {
 		super.refreshView();
 		String errorString;

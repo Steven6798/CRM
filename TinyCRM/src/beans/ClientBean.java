@@ -56,20 +56,29 @@ public class ClientBean extends CRMBean {
 		this.facebook = facebook;
 	}
 	
+	@Override
 	public String getDescription() {
 		return company;
 	}
 	
+	@Override
 	public String toString() {
 		return this.getId() + ": " + this.getCompany();
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof ClientBean) {
 			ClientBean c = (ClientBean) o;
 			return (c.getId() == this.getId());
 		}
 		return false;
+	}
+
+	@Override
+	public long getClient() {
+		// Method not used in th
+		return 0;
 	}
 	
 }

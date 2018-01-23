@@ -1,45 +1,38 @@
 package controllers;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import exceptions.InvalidFormFieldData;
 import models.CRMModel;
-import models.ClientModel;
-import swingViews.ContactSwingView;
 import swingViews.SwingView;
 import views.ContactTCRMView;
 
 public class NewContactController extends ContactController {
 
-	ContactTCRMView view = (ContactTCRMView) getView();
-
 	public NewContactController(SwingView contactView, CRMModel contactModel, CRMModel clientModel) {
 		super(contactView, contactModel, clientModel);
+	}
+	
+	@Override
+	public void doLeft() {
+		super.doLeft();
+	}
 
-		ContactSwingView cv = (ContactSwingView) contactView;
-		ClientModel clientModel2 = (ClientModel) clientModel;
-
-		cv.setSelectClientItems(clientModel2.getAllBeans());
-		cv.clearFieldErrors();
-		cv.setSelectClientListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Client Combo Box Selected");
-			}
-		});
+	@Override
+	public void doRight() {
+		super.doRight();
 	}
 
 	@Override
 	public void validateFirstName() throws InvalidFormFieldData {
+		ContactTCRMView view = (ContactTCRMView) getView();
 		if(!view.getTextFirstName().matches("[a-zA-Z]* ?[a-zA-Z]{1}")) {
 			if(view.getTextFirstName().matches("[a-zA-Z]* {2,}[a-zA-Z]{1}")) {
 				addValidationError("FirstName", "The first name can only contain one space between name and middle name.");
 			}
-			else if(view.getTextFirstName().matches("[a-zA-Z]* {1}")) {
+			else if(view.getTextFirstName().matches("[a-zA-Z]* +")) {
 				addValidationError("FirstName", "If there is a space after the name, there must be a middle name.");
 			}
 			else {
-				addValidationError("FirstName", "Invalid name structure. Examples: 'Bruce', 'Bruce L'.");
+				addValidationError("FirstName", "Invalid name structure.");
 			}
 		}
 		super.validateFirstName();
@@ -47,15 +40,16 @@ public class NewContactController extends ContactController {
 
 	@Override
 	public void validateLastName() throws InvalidFormFieldData {
+		ContactTCRMView view = (ContactTCRMView) getView();
 		if(!view.getTextLastName().matches("[a-zA-Z]* ?[a-zA-Z]+")) {
-			if(view.getTextLastName().matches("[a-zA-Z]* {2,}[a-zA-Z]*")) {
+			if(view.getTextLastName().matches("[a-zA-Z]* {2,}[a-zA-Z]+")) {
 				addValidationError("LastName", "The last name can only contain one space between the first and second last names.");
 			}
-			else if(view.getTextLastName().matches("[a-zA-Z]* {1}")) {
+			else if(view.getTextLastName().matches("[a-zA-Z]* +")) {
 				addValidationError("LastName", "If there is a space after the last name, there must be a second last name.");
 			}
 			else {
-				addValidationError("LastName", "Invalid last name structure. Examples: 'Dew', 'Dew Gray'.");
+				addValidationError("LastName", "Invalid last name structure.");
 			}
 		}
 		super.validateLastName();
@@ -63,32 +57,36 @@ public class NewContactController extends ContactController {
 
 	@Override
 	public void validateCompany() throws InvalidFormFieldData {
-		if(!view.getTextCompany().matches("[a-zA-Z]* ?[a-zA-Z]* ?[a-zA-Z]* ?[a-zA-Z]")) {
-			addValidationError("Company", "Invalid company name structure. Examples: 'Energy online', 'Steven Online media blog'");
+		ContactTCRMView view = (ContactTCRMView) getView();
+		if(!view.getTextCompany().matches("(?!\\s)(?!.*\\s$)(?=.*[a-zA-Z0-9])[a-zA-Z0-9 '~?!&]{2,}")) {
+			addValidationError("Company", "Company names can only contain letters, numbers, and the symbols '~?!&.");
 		}
 		super.validateCompany();
 	}
 
 	@Override
 	public void validateTelephone() throws InvalidFormFieldData {
-		if(!view.getTextTelephone().matches("[0-9]{3} ?\\-?[0-9]{3} ?\\-?[0-9]{4}")) {
-			addValidationError("Telephone", "Invalid telephone structure. Examples: '787 222 2222', '787-222-2222'");
+		ContactTCRMView view = (ContactTCRMView) getView();
+		if(!view.getTextTelephone().matches("[(]{1}[0-9]{3}[)]{1} {1}[0-9]{3}-{1}[0-9]{4}")) {
+			addValidationError("Telephone", "Invalid telephone structure.");
 		}
 		super.validateTelephone();
 	}
 
 	@Override
 	public void validateEmail() throws InvalidFormFieldData {
+		ContactTCRMView view = (ContactTCRMView) getView();
 		if(!view.getTextEmail().matches("^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$")) {
-			addValidationError("Email", "Invalid email structure. Examples: 'journaldev.100@journaldev.com.au', 'journaldev-100@yahoo.com'");
+			addValidationError("Email", "Invalid email structure.");
 		}
 		super.validateEmail();
 	}
 
 	@Override
 	public void validateFacebook() throws InvalidFormFieldData {
-		if(!view.getTextFacebook().matches("[a-zA-Z]* ?[a-zA-Z]* ?[a-zA-Z]* ?[a-zA-Z]*")) {
-			addValidationError("Facebook", "Invalid facebook name structure. Examples: 'Carl Jhonson', 'Mia S Savelli Ruiz'");
+		ContactTCRMView view = (ContactTCRMView) getView();
+		if(!view.getTextFacebook().matches("[a-zA-Z0-9\\. \r]{5,}")) {
+			addValidationError("Facebook", "Facebook names can only contain leters, numbers and spaces and must be at least 5 characters long.");
 		}
 		super.validateFacebook();
 	}

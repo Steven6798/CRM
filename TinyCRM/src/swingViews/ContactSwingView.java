@@ -132,6 +132,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 		textFirstName = new JTextField();
 		textFirstName.setEditable(false);
+		textFirstName.setToolTipText("Dirk N");
 		GridBagConstraints gbc_txtFirstname = new GridBagConstraints();
 		gbc_txtFirstname.insets = new Insets(0, 0, 5, 0);
 		gbc_txtFirstname.fill = GridBagConstraints.HORIZONTAL;
@@ -161,6 +162,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 		textLastName = new JTextField();
 		textLastName.setEditable(false);
+		textLastName.setToolTipText("Mcolumm James");
 		GridBagConstraints gbc_textLastName = new GridBagConstraints();
 		gbc_textLastName.insets = new Insets(0, 0, 5, 0);
 		gbc_textLastName.fill = GridBagConstraints.HORIZONTAL;
@@ -189,6 +191,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 		textCompany = new JTextField();
 		textCompany.setEditable(false);
+		textCompany.setToolTipText("Art inc~'!&");
 		GridBagConstraints gbc_textCompany = new GridBagConstraints();
 		gbc_textCompany.insets = new Insets(0, 0, 5, 0);
 		gbc_textCompany.fill = GridBagConstraints.HORIZONTAL;
@@ -304,6 +307,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 
 		textFacebook = new JTextField();
 		textFacebook.setEditable(false);
+		textFacebook.setToolTipText("Manuel75.");
 		GridBagConstraints gbc_textFacebook = new GridBagConstraints();
 		gbc_textFacebook.insets = new Insets(0, 0, 5, 0);
 		gbc_textFacebook.fill = GridBagConstraints.HORIZONTAL;
@@ -341,18 +345,23 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 	public void setTextEmail(String textEmail)         { this.textEmail.setText(textEmail); }
 	public void setTextFacebook(String textFacebook)   { this.textFacebook.setText(textFacebook); }
 
+	@Override
 	public int getSelectedClientIndex() {
 		return comboBoxClient.getSelectedIndex();
 	}
 
+	@Override
 	public void setSelectedClientIndex(int index) {
 		if (index >= 0 && index <= comboBoxClient.getItemCount()) {
-			comboBoxClient.setEnabled(false);
-			comboBoxClient.setSelectedIndex(index);
-			comboBoxClient.setEnabled(true);
+			boolean previous = comboBoxClient.isEnabled();
+			comboBoxClient.setEnabled(false); // Avoid firing event listeners
+	  		comboBoxClient.setSelectedIndex(index);
+	  		comboBoxClient.setEnabled(true);
+	  		comboBoxClient.setEnabled(previous);
 		}
 	}
 
+	@Override
 	public void setSelectClientItems(ArrayList<CRMBean> list) {
 		comboBoxClient.removeAllItems();
 		for (CRMBean item : list) {
@@ -360,6 +369,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		}
 	}
 
+	@Override
 	public void setSelectClientListener(ActionListener listener) {
 		comboBoxClient.addActionListener(listener);
 	}
@@ -378,6 +388,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 	public void setErrorEmail(String errorEmail)         { emailLblError.setText(errorEmail); }
 	public void setErrorFacebook(String errorFacebook)    { facebookLblError.setText(errorFacebook); }
 
+	@Override
 	public void beanToForm(CRMBean bean) {
 		ContactBean cb = (ContactBean) bean;
 		this.setTextId(""+cb.getId());
@@ -395,6 +406,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		this.setTextFacebook(cb.getFacebook());
 	}
 
+	@Override
 	public void formToBean(CRMBean bean) {
 		ContactBean cb = (ContactBean) bean;
 		cb.setFirstName(textFirstName.getText());
@@ -406,6 +418,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		cb.setFacebook(textFacebook.getText());
 	}
 
+	@Override
 	public void enableEditMode() { 
 		super.enableEditMode();
 		textFirstName.setEditable(true);
@@ -417,6 +430,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		textFacebook.setEditable(true);
 	}
 	
+	@Override
 	public void disableEditMode() {
 		super.disableEditMode();
 		textId.setEditable(false);
@@ -429,6 +443,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		textFacebook.setEditable(false);
 	}
 
+	@Override
 	public void clearForm() {
 		textId.setText("");
 		textFirstName.setText("");
@@ -441,6 +456,7 @@ public class ContactSwingView extends SwingView implements ContactTCRMView {
 		clearFieldErrors();
 	}
 
+	@Override
 	public void clearFieldErrors() {
 		idLblError.setText("");
 		firstNameLblError.setText("");

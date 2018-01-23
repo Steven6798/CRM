@@ -8,30 +8,33 @@ import controllers.NewClientController;
 import controllers.NewContactController;
 import controllers.OpportunityController;
 import models.CRMModel;
-import models.ClientModel;
 import models.ContactModel;
+import models.NewClientModel;
 import models.OpportunityModel;
-import swingViews.ClientSwingView;
 import swingViews.ContactSwingView;
+import swingViews.NewClientSwingView;
 import swingViews.OpportunitySwingView;
 import swingViews.SwingView;
 
 public class CRMMain {
 
+	public static CRMModel clientModel = new NewClientModel();
+	public static CRMModel contactModel = new ContactModel();
+	public static CRMModel opportunityModel = new OpportunityModel();
+	
 	// Create Client module MVC objects
-	public static SwingView clientView = new ClientSwingView();
-	public static CRMModel clientModel = new ClientModel();
-	public static CRMController clientController = new NewClientController(clientView, clientModel);
+	public static SwingView clientView = new NewClientSwingView();
+	// Client module has relationship with Contact and Opportunity modules
+	// so we pass the Contact and Opportunity models objects to the Client controller
+	public static CRMController clientController = new NewClientController(clientView, clientModel, contactModel, opportunityModel);
 
 	// Create Contact module MVC objects
 	public static SwingView contactView = new ContactSwingView();
-	public static CRMModel contactModel = new ContactModel();
 	// Contacts module has relationship with Client module so we pass the Clients model object to the Contacts controller
 	public static CRMController contactController = new NewContactController(contactView, contactModel, clientModel); 
 	
 	// Create Opportunity module MVC objects
 	public static SwingView opportunityView = new OpportunitySwingView();
-	public static CRMModel opportunityModel = new OpportunityModel();
 	// Opportunity module has relationship with Client module so we pass the Clients model object to the Opportunity controller
 	public static CRMController opportunityController = new OpportunityController(opportunityView, opportunityModel, clientModel); 
 	
@@ -39,9 +42,9 @@ public class CRMMain {
 	private static SwingView currentView;
 
 	// mapModuleToView holds the view object for each module
-	public static Map<String,SwingView> mapModuleToView = new HashMap<String,SwingView>();
+	public static Map<String, SwingView> mapModuleToView = new HashMap<String, SwingView>();
 	// mapModuleToIndex holds the index in the module selection combo box for each module
-	public static Map<String,Integer> mapModuleToIndex = new HashMap<String,Integer>();
+	public static Map<String, Integer> mapModuleToIndex = new HashMap<String, Integer>();
 
 	public static void main (String[] args) {
 
@@ -58,6 +61,10 @@ public class CRMMain {
 		mapModuleToIndex.put("Opportunities", 2);
 		mapModuleToIndex.put("Reports", 3);
 		
+		// Inits necessary to initially refresh contact and opportunity combo boxes on client module.
+		contactController.doInit();
+		opportunityController.doInit();
+		
 		clientController.doInit();
 		clientController.setSwitchModuleListener((String s) -> CRMMain.switchToModule(s));
 
@@ -71,7 +78,6 @@ public class CRMMain {
 	}
 
 	public static void switchToModule(String moduleName) {
-
 		if (moduleName.equals(currentModule)) return;
 		SwingView nextView = mapModuleToView.get(moduleName);
 		if (nextView != null) {

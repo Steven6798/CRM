@@ -27,46 +27,67 @@ public class OpportunityController extends CRMController {
 				System.out.println("Client Combo Box Selected");
 			}
 		});
+		ov.setSelectStatusListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Status Combo Box Selected");
+			}
+		});
 	}
 	
+	@Override
 	public void doInit() {
-		super.doInit();
 		refreshDropdowns();
+		super.doInit();
 	}
 	
+	@Override
 	public void doLeft() {
 		System.out.println("OpportunityController.doLeft()");
 		super.doLeft();
 	}
 
+	@Override
 	public void doRight() {
 		System.out.println("OpportunityController.doRight()");
 		super.doRight();
 	}
 
+	@Override
 	public void doEdit() {
-		System.out.println("OpportunityController.doRight()");
-		refreshDropdowns();
+		System.out.println("OpportunityController.doEdit()");
 		super.doEdit();
 	}
 
+	@Override
 	public void doAdd() {
 		System.out.println("OpportunityController.doAdd()");
 		refreshDropdowns();
 		super.doAdd();
 	}
 
+	@Override
 	public void doDelete() {
 		System.out.println("OpportunityController.doDelete()");
 		super.doDelete();
 	}
 
+	@Override
 	public void doSave() {
 		System.out.println("OpportunityController.doSave()");
 		super.doSave();
 	}
+	
+	@Override
+	public void doCancel() {
+		System.out.println("OpportunityController.doCancel()");
+		super.doCancel();
+	}
 
 	public void doSelectClient() {
+		this.refreshView();
+	}
+	
+	public void doSelectStatus() {
 		this.refreshView();
 	}
 
@@ -76,7 +97,6 @@ public class OpportunityController extends CRMController {
 		validateDescription();
 		validateValue();
 		validateDate();
-		validateStatus();
 		if (getValidationErrors().size() > 0) {
 			throw new InvalidFormFieldData ("Invalid Form");
 		}
@@ -94,8 +114,8 @@ public class OpportunityController extends CRMController {
 		if (view.getTextValue().trim().length() == 0) {
 			addValidationError("Value", "Empty Value. Required Field.");
 		}
-		else if(!view.getTextValue().matches("[0-9]*")) {
-			addValidationError("Value", "Value must only contain numbers.");
+		else if(!view.getTextValue().matches("[0-9]*\\.?[0-9]{2}")) {
+			addValidationError("Value", "Invalid Value structure.");
 		}
 	}
 	
@@ -104,15 +124,8 @@ public class OpportunityController extends CRMController {
 		if (view.getTextDate().trim().length() == 0) {
 			addValidationError("Date", "Empty Date. Required Field.");
 		}
-		else if(!view.getTextDate().matches("[0-9]{2}.[0-9]{2}.(?:[0-9]{2})?[0-9]{2}")) {
-			addValidationError("Date", "Date must only contain numbers and slashes.");
-		}
-	}
-	
-	public void validateStatus() throws InvalidFormFieldData {
-		OpportunityTCRMView view = (OpportunityTCRMView) getView();
-		if (view.getTextStatus().trim().length() == 0) {
-			addValidationError("Status", "Empty Status. Required Field.");
+		else if(!view.getTextDate().matches("[0-9]{2}.[0-9]{2}.(?:[0-9]{2})?[0-9]{2}\r*")) {
+			addValidationError("Date", "Invalid Date Structure.");
 		}
 	}
 
@@ -120,8 +133,10 @@ public class OpportunityController extends CRMController {
 	public void refreshDropdowns() {
 		OpportunityTCRMView ov = (OpportunityTCRMView) getView();
 		ov.setSelectClientItems(CRMMain.clientModel.getAllBeans());
+		ov.setSelectStatusItems();
 	}
 	
+	@Override
 	protected void refreshView() {
 		super.refreshView();
 		String errorString;
@@ -133,7 +148,6 @@ public class OpportunityController extends CRMController {
 			if (validationErrors.containsKey("Description")) { ov.setErrorDescription(validationErrors.get("Description")); }
 			if (validationErrors.containsKey("Value")) { ov.setErrorValue(validationErrors.get("Value")); }
 			if (validationErrors.containsKey("Date")) { ov.setErrorDate(validationErrors.get("Date")); }
-			if (validationErrors.containsKey("Status")) { ov.setErrorStatus(validationErrors.get("Status")); }
 			ov.setMessagesText(errorString);
 		}
 	}

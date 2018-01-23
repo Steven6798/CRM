@@ -45,6 +45,7 @@ public class ContactBean extends CRMBean {
 		this.company = company;
 	}
 	
+	@Override
 	public long getClient() {
 		return client;
 	}
@@ -77,14 +78,17 @@ public class ContactBean extends CRMBean {
 		this.facebook = facebook;
 	}
 	
+	@Override
 	public String getDescription() {
 		return firstName + " " + lastName;
 	}
 	
+	@Override
 	public String toString() {
 		return this.getId() + ": " + this.getFirstName() + " " + this.getLastName();
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if (o instanceof ContactBean) {
 			ContactBean c = (ContactBean) o;

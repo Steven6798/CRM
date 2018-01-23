@@ -5,18 +5,19 @@ public class OpportunityBean extends CRMBean {
 	private long client;
 	private String description;
 	private String value;
-	private String date;
 	private String status;
+	private String date;
 
 	public OpportunityBean(long id) {
 		super(id);
 		client = -1;
 		description = "";
 		value = "";
-		date = "";
 		status = "";
+		date = "";
 	}
 	
+	@Override
 	public long getClient() {
 		return client;
 	}
